@@ -134,6 +134,7 @@ text-align: center;
   }
   
   #github a span {
-  margin-top: 0.5rem;
-  line-height: 0.1;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+    text-decoration: none;
   }

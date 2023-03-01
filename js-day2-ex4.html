@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="CSS/2-4style.css" />
+  </head>
+  <body>
+    <div id="div-table">
+      <table class="table">
+        <thead>
+          <tr id="header-row">
+            <th id="header-id">ID</th>
+            <th id="header-year">Year</th>
+            <th id="header-make">Make</th>
+            <th id="header-model">Model</th>
+            <th id="header-price">Price</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div id="div-filters">
+      <div class="filter-container">
+        <label for="sort-price">Price:</label>
+        <input type="number" id="sort-price" />
+        <button id="sort-price-btn">Price less than</button>
+      </div>
+      <div class="filter-container">
+        <label for="sort-make">Make:</label>
+        <input type="text" id="sort-make" />
+        <button id="sort-make-btn">Search by make</button>
+      </div>
+      <button id="clear-btn">Clear Filters</button>
+    </div>
+    
+    
+    <br />
+    <a href="index.html">Back</a>
+
+    <script>
+      const cars = [
+        { id: 1, year: 1997, make: "Ford", model: "E350", price: 3000 },
+        { id: 2, year: 1999, make: "Chevy", model: "Venture", price: 4900 },
+        { id: 3, year: 2000, make: "Chevy", model: "Venture", price: 5000 },
+        {
+          id: 4,
+          year: 1996,
+          make: "Jeep",
+          model: "Grand Cherokee",
+          price: 4799,
+        },
+        { id: 5, year: 2005, make: "Volvo", model: "V70", price: 44799 },
+        { id: 6, year: 2008, make: "Toyota", model: "Camry", price: 8000 },
+        { id: 7, year: 2012, make: "Honda", model: "Civic", price: 12000 },
+        { id: 8, year: 2015, make: "Nissan", model: "Altima", price: 15000 },
+        { id: 9, year: 2017, make: "Ford", model: "Mustang", price: 25000 },
+        { id: 10, year: 2020, make: "Tesla", model: "Model S", price: 80000 },
+        { id: 11, year: 2010, make: "BMW", model: "X5", price: 15000 },
+        {
+          id: 12,
+          year: 2018,
+          make: "Mercedes-Benz",
+          model: "C-Class",
+          price: 35000,
+        },
+        { id: 13, year: 2014, make: "Audi", model: "A4", price: 18000 },
+        { id: 14, year: 2006, make: "Lexus", model: "RX 330", price: 12000 },
+        { id: 15, year: 2009, make: "Subaru", model: "Impreza", price: 8000 },
+      ];
+
+      createTable(cars);
+
+      function createTable(array) {
+        document.getElementById("tbody").innerHTML = array
+          .map(
+            (car) => `<tr>
+          <td>${car.id}</td><td>${car.year}</td><td>${car.make}</td><td>${car.model}</td><td>${car.price}</td>
+          </tr>`
+          )
+          .join("");
+      }
+
+      document.getElementById("sort-price-btn").onclick = () => {
+        const sortPrice = document.getElementById("sort-price").value;
+        const newArray = cars.filter((car) => car.price < sortPrice);
+
+        createTable(newArray);
+      };
+
+      document.getElementById("clear-btn").onclick = () => {
+        createTable(cars);
+        document.getElementById("sort-price").value = "";
+        document.getElementById("sort-make").value = "";
+      };
+
+      document.getElementById("sort-make-btn").onclick = () => {
+        const sortMake = document
+          .getElementById("sort-make")
+          .value.toLowerCase();
+        const newArray = cars.filter((car) =>
+          car.make.toLowerCase().includes(sortMake)
+        );
+
+        createTable(newArray);
+      };
+
+      let sortColumn = null; // remember the column to sort by
+      let ascending = true; // remember the sort order
+
+      document.getElementById("header-row").onclick = (event) => {
+        const id = event.target.id;
+
+        let sortedTable = [];
+
+        if (id === sortColumn) {
+          // toggle sort order if the same header is clicked again
+          ascending = !ascending;
+        } else {
+          // sort by the clicked header in ascending order by default
+          sortColumn = id;
+          ascending = true;
+        }
+
+        switch (id) {
+          case "header-id":
+            sortedTable = cars.sort((a, b) =>
+              ascending ? a.id - b.id : b.id - a.id
+            );
+            break;
+          case "header-year":
+            sortedTable = cars.sort((a, b) =>
+              ascending ? a.year - b.year : b.year - a.year
+            );
+            break;
+          case "header-make":
+            sortedTable = cars.sort((a, b) =>
+              ascending
+                ? a.make.localeCompare(b.make)
+                : b.make.localeCompare(a.make)
+            );
+            break;
+          case "header-model":
+            sortedTable = cars.sort((a, b) =>
+              ascending
+                ? a.model.localeCompare(b.model)
+                : b.model.localeCompare(a.model)
+            );
+            break;
+          case "header-price":
+            sortedTable = cars.sort((a, b) =>
+              ascending ? a.price - b.price : b.price - a.price
+            );
+            break;
+          default:
+            sortedTable = cars;
+        }
+
+        createTable(sortedTable);
+      };
+    </script>
+  </body>
+</html>

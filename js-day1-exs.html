@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <style>
+    /* Reset default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Set a background color for the page */
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+    
+    /* Style the iframe */
+    iframe {
+      display: block;
+      width: 80%; /* Reduce width to make room for the back button */
+      height: 600px; /* Set a fixed height */
+      border: none;
+      margin: 40px auto 0; /* Add top margin to separate from header */
+    }
+    
+    /* Style the back button */
+    a {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      background-color: #555;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    a:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <iframe src="day1-js.js"></iframe>
+  <a href="index.html">Back</a>
+</body>
+</html>

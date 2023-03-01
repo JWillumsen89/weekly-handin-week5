@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Name List</title>
+    <link rel="stylesheet" href="CSS/2-3style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Name List</h1>
+      <form class="form">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" class="form-control" />
+        </div>
+        <div class="form-group">
+          <button type="submit" id="submit-btn" class="btn">Add Name</button>
+          <button type="submit" id="remove-first-btn" class="btn">
+            Remove first name in list
+          </button>
+          <button type="submit" id="remove-last-btn" class="btn">
+            Remove last name in list
+          </button>
+        </div>
+      </form>
+      <ul id="name-ul" class="name-list"></ul>
+      <a href="index.html" class="back-link">Back</a>
+    </div>
+
+    <script>
+      const nameArray = [
+        "Harry",
+        "Hermione",
+        "Ron",
+        "Ginny",
+        "Neville",
+        "Luna",
+        "Fred",
+        "George",
+        "Draco",
+        "Cedric",
+        "Cho",
+        "Lavender",
+        "Parvati",
+        "Padma",
+        "Fleur",
+        "Viktor",
+        "Sirius",
+        "Remus",
+        "James",
+        "Lily",
+        "Albus",
+        "Severus",
+        "Minerva",
+        "Bellatrix",
+        "Lucius",
+      ];
+
+      createList(nameArray);
+
+      function createList(array) {
+        document.getElementById("name-ul").innerHTML = array
+          .map(
+            (name) => `<li>${name}</li>
+      `
+          )
+          .join("");
+      }
+
+      document.getElementById("submit-btn").onclick = (event) => {
+        event.preventDefault();
+        const newName = document.getElementById("name").value;
+        nameArray.push(newName);
+        createList(nameArray);
+        document.getElementById("name").value = "";
+      };
+
+      document.getElementById("remove-first-btn").onclick = (event) => {
+        event.preventDefault();
+        nameArray.shift();
+        createList(nameArray);
+      };
+
+      document.getElementById("remove-last-btn").onclick = (event) => {
+        event.preventDefault();
+        nameArray.pop();
+        createList(nameArray);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="CSS/2-1style.css" />
+</head>
+<body>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<div  style="width: 100px;margin: 1px;">&nbsp;</div>
+<button id="button">Change color</button>
+<br>
+<a href="index.html">Back</a>
+
+<script>
+  const divs = document.querySelectorAll("div")
+
+  const colorArray = [
+  "#FFC300",
+  "#FF5733",
+  "#C70039",
+  "#900C3F",
+  "#581845",
+  "#2274A5",
+  "#32965D",
+  "#9DCA76",
+  "#FDFD97",
+  "#FEBE7E",
+  "#FF6F69",
+  "#8C1C13",
+  "#603F83",
+  "#C8C8A9",
+  "#F7CAC9",
+  "#E8AEB7",
+  "#F0B67F",
+  "#007BA7",
+  "#D6ED17",
+  "#27A8E0",
+  "#C81D25",
+  "#3D3B8E",
+  "#78281F",
+  "#2C2D72",
+  "#2B2D42",
+  "#14213D",
+  "#FCA311",
+  "#F57C00",
+  "#C8102E",
+];
+
+  const color = colorArray[Math.floor(Math.random() * colorArray.length)]
+
+for(let i = 0; i < divs.length; i++) {
+  divs[i].style.background = color
+}
+
+
+
+
+
+document.getElementById('button').onclick = () => {
+
+  for(let i = 0; i < divs.length; i++) {
+    divs[i].style.background = colorArray[Math.floor(Math.random() * colorArray.length)];
+}
+}
+
+</script>
+</body>
+</html>

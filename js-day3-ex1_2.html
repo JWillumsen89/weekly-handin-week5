@@ -1,12 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <a href="index.html">Back</a>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #all-users-content,
+      #single-user-content {
+        display: none;
+      }
+      #p-user-error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="number" id="input-id" placeholder="Enter id..." />
+    <button id="get-user-btn">Get User</button>
+    <button id="get-all-btn">Get All</button>
+    <table id="all-users-content">
+      <thead>
+        <tr id="header-row">
+          <th id="header-name">Name</th>
+          <th id="header-phone">Phone</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div id="single-user-content">
+      <h2>User Details</h2>
+      <p id="p-user-name"></p>
+      <p id="p-user-email"></p>
+      <p id="p-user-error"></p>
+    </div>
+    <a href="index.html">Back</a>
+    <script>
+      const url = "https://jsonplaceholder.typicode.com/users/";
+
+      const getAllBtn = document.getElementById("get-all-btn");
+      const getSingleBtn = document.getElementById("get-user-btn");
+      const allUsersContent = document.getElementById("all-users-content");
+      const singleUserContent = document.getElementById("single-user-content");
+      const inputId = document.getElementById("input-id");
+      const tbody = document.getElementById("tbody");
+      const pUserName = document.getElementById("p-user-name");
+      const pUserEmail = document.getElementById("p-user-email");
+      const pUserError = document.getElementById("p-user-error");
+
+      getAllBtn.addEventListener("click", getAllUsers);
+      getSingleBtn.addEventListener("click", getSingleUser);
+
+      function getAllUsers() {
+        singleUserContent.style.display = "none";
+        fetch(url)
+          .then((res) => res.json())
+          .then((data) => {
+            const rows = data
+              .map(
+                (d) => `<tr>
+                  <td>${d.name}</td><td>${d.phone}</td>
+                </tr>`
+              )
+              .join("");
+            tbody.innerHTML = rows;
+            allUsersContent.style.display = "block";
+            inputId.value = "";
+          });
+      }
+
+      function getSingleUser() {
+        allUsersContent.style.display = "none";
+        singleUserContent.style.display = "block";
+        pUserError.innerText = "";
+        const id = inputId.value;
+        if (!id) {
+          pUserError.innerText = "Please provide an id";
+          return;
+        }
+
+        fetch(url + id)
+          .then((res) => {
+            if (!res.ok) {
+              return Promise.reject("Could not find user");
+            }
+            return res.json();
+          })
+          .then((user) => {
+            pUserName.innerHTML = user.name;
+            pUserEmail.innerHTML = user.email;
+          })
+          .catch((e) => {
+            console.log("Error", e);
+            pUserName.innerHTML = "";
+            pUserEmail.innerHTML = "";
+            pUserError.innerText = e;
+          });
+      }
+    </script>
+  </body>
 </html>

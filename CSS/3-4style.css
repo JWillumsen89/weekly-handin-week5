@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #f6f7fb;
+}
+
+h2 {
+  font-weight: 700;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.item {
+  background-color: #fff;
+  padding: 2rem;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.item h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  border-bottom: 2px solid #1c2237;
+  padding-bottom: 0.5rem;
+}
+
+.item p:last-of-type {
+  margin-bottom: 0;
+}
+
+button {
+  margin-top: auto;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #1c2237;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:first-child {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+button:hover {
+  background-color: #131722;
+}
+
+#back-btn {
+  co
+}
+
+.item input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.item input:focus {
+  border-color: #1c2237;
+  box-shadow: 0px 0px 5px #1c2237;
+}
+
+.item label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: #444;
+  font-weight: 500;
+}
+
+.item div {
+  display: flex;
+  align-items: center;
+}
+
+#cars-table-div {
+  margin-top: 0.5rem;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  color: #444;
+  table-layout: fixed;
+}
+
+th {
+  background-color: #1c2237;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+}
+
+td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f6f7fb;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  background-color: #1c2237;
+  color: #fff;
+}
+
+#p-car-error {
+  color: red;
+  font-weight: bold;
+}
+.item input.invalid {
+  border-color: red;
+}
+.invalid {
+  border: 1px solid red;
+}

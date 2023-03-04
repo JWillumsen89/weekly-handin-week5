@@ -1,12 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <a href="index.html">Back</a>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="CSS/3-4style.css" />
+  </head>
+  <body style="font-family: sans-serif">
+    <div style="margin-left: 10%; width: 75%; margin-right: auto">
+      <h2>Car's 'R' Us</h2>
+      <div class="parent">
+        <!--Cars List-->
+        <div class="item">
+          <h3>Cars List</h3>
+          <button id="btn-get-all">Show All Cars</button>
+          <div id="cars-table-div" style="display: none">
+            <table id="cars-table">
+              <thead>
+                <tr>
+                  <th>Car ID</th>
+                  <th>Car Brand</th>
+                  <th>Car Model</th>
+                  <th>Daily Rental Price</th>
+                  <th>Max Discount</th>
+                </tr>
+              </thead>
+              <tbody id="cars-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+        <!--Find single car-->
+        <div class="item">
+          <h3>Find a single Car</h3>
+          <label for="car-id"
+            >Id:<input type="number" id="car-id" placeholder="Enter car id..."
+          /></label>
+          <div id="single-car-content" style="display: none">
+            <h4>Car Details</h4>
+            <p id="p-car-id"></p>
+            <p id="p-car-brand"></p>
+            <p id="p-car-model"></p>
+            <p id="p-car-daily-price"></p>
+            <p id="p-car-max-discount"></p>
+          </div>
+          <p id="p-car-error" style="display: none"></p>
+          <button id="find-car-id-btn">Find Car</button>
+        </div>
+        <!--Add a car-->
+        <div class="item">
+          <h3>Add Car</h3>
+          <div>
+            <label for="input-brand"
+              >Brand<input class="add-car-input" id="input-brand" placeholder="Enter brand..."
+            /></label>
+          </div>
+          <div>
+            <label for="input-model"
+              >Model<input class="add-car-input" id="input-model" placeholder="Enter model..."
+            /></label>
+          </div>
+          <div>
+            <label for="input-price"
+              >Price per day<input class="add-car-input" id="input-price" placeholder="Enter Price per day..."
+            /></label>
+          </div>
+          <div>
+            <label for="input-discount"
+              >Best Discount<input class="add-car-input" id="input-discount" placeholder="Enter best discount..."
+            /></label>
+          </div>
+          <p id="add-car-error" style="color: red; display: none">
+            Please fill out all fields.
+          </p>
+          <p id="add-car-success" style="color: green; display: none">
+            Car successfully added
+          </p>
+          <p id="car-data-added"></p>
+          <button id="create-new-car-btn">Add New Car</button>
+          <button id="clear-btn" style="display: none">Clear Form</button>
+        </div>
+        <!--Edit car-->
+        <div class="item">
+          <h3>Edit Car</h3>
+          <label for="car-id2"
+            >Id:<input id="car-id2" placeholder="Enter car id..."
+          /></label>
+          <button id="find-car-edit-id-btn">Find Car To Edit</button>
+          <div id="single-car-edit-content" style="display: none">
+            <table id="car-edit-table">
+              <thead>
+                <tr>
+                  <th>Car ID</th>
+                  <th>Car Brand</th>
+                  <th>Car Model</th>
+                  <th>Daily Rental Price</th>
+                  <th>Max Discount</th>
+                </tr>
+              </thead>
+              <tbody id="car-edit-tbody"></tbody>
+            </table>
+          </div>
+          <p id="p-car-edit-error" style="display: none; color: red"></p>
+          <button id="edit-car-submit-btn" style="display: none">
+            Update Car
+          </button>
+          <p id="add-car-edit-error" style="color: red; display: none">
+            Please fill out all fields.
+          </p>
+          <p id="add-car-edit-success" style="color: green; display: none">
+            Car successfully updated
+          </p>
+          <p id="car-data-updated"></p>
+        </div>
+      </div>
+    </div>
+
+      <a href="index.html"><button id="back-btn">Back</button></a>
+    
+    <script src="day3-4.js"></script>
+  </body>
 </html>
